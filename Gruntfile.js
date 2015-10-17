@@ -2,7 +2,7 @@
  * Gruntfile for config
  * Created by Administrator on 2015/10/17.
  */
-
+const childProcess = require("child_process");
 module.exports =function(grunt){
     grunt.initConfig({
         concat: {
@@ -26,8 +26,8 @@ module.exports =function(grunt){
             }
         },
         watch : {
-            files: ['lib/button.js'],
-            tasks: ['concat','uglify']
+            files: ['src/button.js'],
+            tasks: ['babel','concat','uglify']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -37,6 +37,9 @@ module.exports =function(grunt){
     grunt.event.on("watch", function (action, filepath, target) {
         console.log("grunt-contrib-watch is running:"+action);
     })
+    grunt.registerTask("babel", function () {
+        childProcess.exec("babel -d lib src/")
+    });
     grunt.registerTask('default', function () {
         console.info("welcome to Grunt!")
     });
