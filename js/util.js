@@ -5,6 +5,8 @@
 
 (function ($) {
     $(document).on("click", "[data-action]", function () {
+        var a = 0;
+        var b = 0;
         if (!$.isFunction(actionMethods[$(this).data("action")])) {
             console.error("not found method!");
             return;
@@ -22,7 +24,9 @@ var actionMethods = {
         var $targetContent = $(this).data("target");
         var $btnSiblings = $(this).addClass(style).siblings("[data-action]");
         $btnSiblings.removeClass(style);
-        console.info($btnSiblings);
+        $btnSiblings.forEach(function (item) {
+            console.info($(item));
+        });
     }
 
 };

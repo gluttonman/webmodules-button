@@ -3,6 +3,8 @@
  */
 (($)=> {
     $(document).on("click", "[data-action]", function () {
+        var a =0 ;
+        var b =0;
         if (!($.isFunction(actionMethods[$(this).data("action")]))) {
             console.error("not found method!")
             return;

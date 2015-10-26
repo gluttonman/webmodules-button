@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket</title>
+    <script type="text/javascript" src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var lastMessge;
+        window.onload = function () {
+            console.info(io);
+            var ws = io.connect('ws://localhost:3000');
+            //监听消息
+            ws.onmessage = function(event) {
+                //valueLabel.innerHTML+ = event.data;
+                console.log(event.data);
+            };
+            // 打开WebSocket
+            ws.onclose = function(event) {
+                //WebSocket Status:: Socket Closed
+            };
+            // 打开WebSocket
+            ws.onopen = function(event) {
+                //WebSocket Status:: Socket Open
+                //// 发送一个初始化消息
+                ws.send("Hello, Server!");
+            };
+            ws.onerror =function(event){
+                //WebSocket Status:: Error was reported
+            };
+        }
+    </script>
+</head>
+<body>
+    <h1>WebSocket Echo</h1>
+<h2>Latency: <span id="latency"></span>ms</h2>
+</body>
+</html>
