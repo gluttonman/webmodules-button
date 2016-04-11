@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular-From</title>
+    <script src="../js/angular.js"></script>
+    <script>
+        angular.module("myApp",[]).controller("myController", function ($scope) {
+            $scope.doLogin = function () {
+                console.info($scope.form);
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myController">
+    <form name="form" ng-submit="doLogin()">
+        <input type="text" name="tel" ng-model="tel"/>
+        <button type="submit">提交</button>
+    </form>
+</div>
+</body>
+</html>
